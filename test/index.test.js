@@ -177,7 +177,7 @@ describe('Barrels', function() {
 
     });
 
-	  //same as above
+    //same as above
     describe('populate(cb, {autoAssociations: false})', function() {
       before(function(done) {
         barrels.populate(['sellers', 'regions'], function(err) {
@@ -224,34 +224,34 @@ describe('Barrels', function() {
 
 
     describe('populate(cb, {purgeExistsData: false})', function() {
-	    var initialAmount;
+      var initialAmount;
 
       before(function(done) {
-	      initialAmount = barrels.data.sellers.length;
+        initialAmount = barrels.data.sellers.length;
 
-	      barrels.populate(['sellers'], function (err) {
-		      if (err)
-			      return done(err);
+        barrels.populate(['sellers'], function (err) {
+          if (err)
+            return done(err);
 
-		      barrels.populate(['sellers'], function (err) {
-			      if (err)
-				      return done(err);
+          barrels.populate(['sellers'], function (err) {
+            if (err)
+              return done(err);
 
-			      done();
-		      }, {purgeExistsData: false});
-	      });
+            done();
+          }, {purgeExistsData: false});
+        });
       });
 
-	    it('should not try to purge exists records', function(done){
-		    Sellers.count().exec(function(err, amount){
-			    if(err){
-				    done(err);
-			    }
-			    amount.should.be.greaterThan(initialAmount);
-			    done();
-		    })
+      it('should not try to purge exists records', function(done){
+        Sellers.count().exec(function(err, amount){
+          if(err){
+            done(err);
+          }
+          amount.should.be.greaterThan(initialAmount);
+          done();
+        })
 
-	    });
+      });
 
 
     });
@@ -268,7 +268,7 @@ describe('Barrels', function() {
 
             barrels.populate(['sellers', 'regions'], function(err) {
               if (err)
-		            return done(err);
+                return done(err);
 
               barrels.populate(['products', 'tags'], function(err) {
                 if (err)
